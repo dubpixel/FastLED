@@ -1,3 +1,101 @@
+FastLED 3.7.4
+=============
+Board support added
+  * https://github.com/FastLED/FastLED/pull/1681
+    * Partial support for adafruit nrf sense
+      * WS2812 compiles
+      * APA102 does not
+    * Hat tip to https://github.com/SamShort7 for the patch.
+  * https://github.com/FastLED/FastLED/pull/1630
+    * Adafruit Pixel Trinkey M0 support
+    * Hat tip: https://github.com/BlitzCityDIY
+
+
+FastLED 3.7.3
+=============
+Adds Arduino IDE 2.3.1+ support in the idf-5.1 toolchain
+The following boards are now tested to compile and build
+  * esp32dev
+  * esp32c3
+  * esp32s3
+  * esp32c6
+  * esp32s2
+
+
+FastLED 3.7.2
+=============
+This is a feature enhancement release
+  * https://github.com/FastLED/FastLED/commit/cbfede210fcf90bcec6bbc6eee7e9fbd6256fdd1
+    * fill_gradient() now has higher precision for non __AVR__ boards.
+		* Fixes: https://github.com/FastLED/FastLED/issues/1658
+			* Thanks https://github.com/sutaburosu for the fix.
+
+
+FastLED 3.7.1
+=============
+This is a bug fix release
+  * https://github.com/FastLED/FastLED/commit/85650d9eda459df20ea966b85d48b84053c2c604
+    * Addresses compiler issues related ESP32-S3 and the RMT legacy driver in ArduinoIDE 2.3.2 update which now includes the ESP-IDF 5.1.
+    * Note that this is a compiler fix *only* and was simple. If the community reports additional problems we will release a bugfix to address it.
+  * https://github.com/FastLED/FastLED/commit/e0a34180c5ad1512aa39f6b6c0987119535d39e8
+    * Work around for ESP32 halt when writing WS2812 LEDS under massive load. It appears there was an underflow condition in a critical ISR to refill the RMT buffer that did not give back to a semaphore. Subsequent calls to `show()` would then block forever. We now given a max timeout so that in the worse case scenario there will be a momentary hang of `portMAX_DELAY`.
+
+
+FastLED 3.7.0
+=============
+This release incorporates valuable improvements from FastLED contributors, tested and explored by the world-wide FastLED community of artists, creators, and developers.  Thank you for all of your time, energy, and help!  Here are some of the most significant changes in FastLED 3.7.0:
+* Support for ESP-IDF version 5.x on ESP32 and ESP8266a
+* Improved support for new boards including UNO r4, Adafruit Grand Central Metro M4, SparkFun Thing Plus, RP2040, Portenta C33, and others.  We also added a pointer to the PORTING.md document to help streamline additional porting; if you’re porting to a new microcontroller, PORTING.md is the place to start.
+* New gamma correction capability for APA102 and SK9822 LEDs
+* Bug fixes and performances improvements, including faster smaller code on AVR, fewer compiler warnings, and  faster build times
+* Released May 2024, with heartfelt thanks to all the FastLED community members around the world!
+
+
+FastLED 3.6.0
+=============
+This release incorporates valuable improvements from FastLED contributors, tested and explored by the world-wide FastLED community of artists, creators, and developers.  Thank you for all of your time, energy, and help!  Here are some of the most significant changes in FastLED 3.6.0: 
+* Greatly improved support for ESP32 and ESP8266
+* Expanded and improved board support including Teensy4, Adafruit M4 CAN Express and Grand Central M4, RP2040, ATtiny48/88, Arduino MKRZero, and various other AVR and ARM boards
+* Added support for DP1903 LEDs
+* Added fill_rainbow_circular and fill_palette_circular functions to draw a full rainbow or other color palette on a circular ring of LEDs
+* Added a non-wrapping mode for ColorFromPalette, "LINEARBLEND_NOWRAP"
+* No more "register" compiler warnings
+* Bug fixes and performance improvements, including in lib8tion and noise functions
+* We are expanding the FastLED team to help the library grow, evolve, and flourish
+* Released May 2023, with deepest thanks to all the FastLED community members around the world!
+
+
+FastLED 3.5.0
+=============
+This release incorporates dozens of valuable improvements from FastLED contributors, tested and explored by the world-wide FastLED community of artists, creators, and developers.  Thank you for all of your time, energy, and help!  Here are some of the most significant changes in FastLED 3.5.0: 
+* Greatly improved ESP32 and ESP8266 support
+* Improved board support for Teensy 4, Adafruit MatrixPortal M4, Arduino Nano Every, Particle Photon, and Seeed Wio Terminal
+* Improved and/or sped up: sin8, cos8, blend8, blur2d, scale8, Perlin/simplex noise
+* Improved HSV colors are smoother, richer, and brighter in fill_rainbow and elsewhere
+* Modernized and cleaned up the FastLED examples
+* Added github CI integration to help with automated testing
+* Added a Code of Conduct from https://www.contributor-covenant.org/
+* Released January 2022, with many thanks to FastLED contributors and the FastLED community!  
+
+
+FastLED 3.4.0
+=============
+
+* Improved reliability on ESP32 when wifi is active
+* Merged in contributed support for Adafruit boards: QT Py SAMD21, Circuit Playground Express,  Circuit Playground Bluefruit, and ItsyBitsy nRF52840 Express
+* Merged in contributed support for SparkFun Artemis boards
+* Merged in contributed support for Arduino Nano Every / Arduino Uno Wifi Rev. 2
+* Merged in contributed support for Seeedstudio Odyssey and XIAO boards
+* Merged in contributed support for AVR chips ATmega1284, ATmega4809, and LGT8F328
+* XYMatrix example now supports 90-degree rotated orientation
+* Moved source code files into "src" subdirectory
+* Many small code cleanups and bug fixes
+* Released December 2020, with many thanks to everyone contributing to FastLED!
+
+We also want to note here that in 2020, Github named FastLED one of the 'Greatest Hits' of Open Source software, and preserved an archived copy of FastLED in the Arctic Code Vault, the Bodleian Library at Oxford University, the Bibliotheca Alexandrina (the Library of Alexandria), and the Stanford University Libraries.  https://archiveprogram.github.com/greatest-hits/
+
+
+
 FastLED 3.3.3
 =============
 
